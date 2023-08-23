@@ -2,7 +2,7 @@ function generateCombinations(array) {
     const result = [[]];
     
     array.forEach(item => {
-        const currentLength = result.length;
+        //const currentLength = result.length;
         const newCombinations = result.map(combination => [...combination, item]);
         result.push(...newCombinations);
     });
