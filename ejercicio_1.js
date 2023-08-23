@@ -8,6 +8,6 @@ function camelToSnake(camel) {
     };
 }
 
-const snake = "MateriaProgramaciónMóvil";
-const result = camelToSnake(snake);
+const input = "MateriaProgramaciónMóvil";
+const result = camelToSnake(input);
 console.log(result);

@@ -1,22 +1,16 @@
 function generateCombinations(array) {
-    const result = [];
-
-    function generator(start, combination) {
-        result.push([...combination]);
-        
-        for (let i = start; i < array.length; i++) {
-            combination.push(array[i]);
-            generator(i + 1, combination);
-            combination.pop();
-        }
-    }
-
-    generator(0, []);
-
+    const result = [[]];
+    
+    array.forEach(item => {
+        const currentLength = result.length;
+        const newCombinations = result.map(combination => [...combination, item]);
+        result.push(...newCombinations);
+    });
+    
     return result;
 }
 
 // Ejemplo de uso
-const input = ['a', 'b', 'c', 'd', 'e'];
-const combinations = generateCombinations(input);
+const inputArray = ['a', 'b', 'c'];
+const combinations = generateCombinations(inputArray);
 console.log(combinations);
