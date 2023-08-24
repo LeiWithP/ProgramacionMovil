@@ -1,16 +1,30 @@
-function generateCombinations(array) {
-    const result = [[]];
-    
-    array.forEach(item => {
-        //const currentLength = result.length;
-        const newCombinations = result.map(combination => [...combination, item]);
-        result.push(...newCombinations);
-    });
-    
-    return result;
-}
-
-// Ejemplo de uso
-const inputArray = ['a', 'b', 'c'];
-const combinations = generateCombinations(inputArray);
-console.log(combinations);
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles2.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@500&display=swap" rel="stylesheet">
+    <title>Tarea 2 Ejercicio 2</title>
+</head>
+<body>
+    <div class="main-window">
+        <img class="bg-image" src="images/illustration-hero.svg" alt="image">
+        <div class="menu">
+            <h1>Order Summary</h1>
+            <p>You can now listen to millions of songs, audiobooks, and potcasts on any device anywhere you like!</p>
+            <div class="info">
+                <img class="music-image" src="images/icon-music.svg" alt="music-image">
+                <div class="plan">
+                    <h4 class="no-margin">Annual Plan</h4>
+                    <p class="no-margin">$59.99/year</p>
+                </div>
+                <a class="change" href="">Change</a>
+            </div>
+            <button class="pay">Proceed to Payment</button>
+            <button class="cancel">Cancel Order</button>
+        </div>
+    </div>
+</body>
+</html>
