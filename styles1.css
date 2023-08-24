@@ -1,0 +1,73 @@
+body {
+    background-color: #1d1d26;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h1 {
+    font-size: 65px;
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: 20px; 
+}
+
+label {
+    font-size: 15px;
+    font-weight: bold;
+    margin-top: 30px;
+    margin-bottom: 10px;
+}
+
+input {
+    height: 60px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+button {
+    background-color: #1d1d26;
+    border-color: #1d1d26;
+    color: white;
+    height: 60px;
+    border-radius: 5px;
+}
+
+.main-window {
+    background-color: white;
+    width: 60%;
+    height: 85%;
+    border-radius: 40px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.window-section {
+    width: 50%;
+    margin: 30px;
+    border-radius: 20px;
+    display: flex;
+}
+
+.left {
+    padding: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    flex-direction: column;
+}
+
+.right {
+    background-image: url(https://dutchreview.com/wp-content/uploads/canal-sunset-amsterdam-is-capital-scaled.jpeg);
+}
+
+.check-line {
+    display: flex;
+    align-items: center;
+}
+
+.icon {
+    width: 30px;
+    height: 30px;
+    margin-right: 20px;
+}
