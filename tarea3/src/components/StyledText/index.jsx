@@ -6,3 +6,11 @@ export const StyledText = ({ text, fontSize, fontWeight, color }) => {
     <Text style={{ fontSize, fontWeight, color }}>{text}</Text>
   );
 };
+
+export const Papyrus = ({ children, style }) => {
+  return (
+    <Text style={[style]}>
+      {children}
+    </Text>
+  );
+};
