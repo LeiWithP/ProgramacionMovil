@@ -1,17 +1,13 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-import { StyledText, Papyrus } from './src/components/StyledText';
-import { Sans } from './src/components/StyledButton';
+import { StyleSheet, View, Text, Dimensions} from 'react-native';
+import Login from './src/screens/Login';
 
 export default function App() {
-  const handleButtonPress = () => {
-    console.log("You Win!");
-  };
+  const { height, width } = Dimensions.get('screen')
 
   return (
     <View style={styles.container}>
-      <Papyrus style={styles.text}>Papyrus 2</Papyrus>
-      <Sans onPress={handleButtonPress} title="Sans Button" style={styles.button} />
+      <Login/>
     </View>
   );
 }
@@ -23,16 +19,4 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  button: {
-    borderWidth: 5,
-    padding: 5,
-    marginTop: 7,
-    borderColor: 'pink'
-  },
-  text: {
-    color: 'purple',
-    fontSize: 40,
-    fontWeight: 'bold',
-    textDecorationLine: 'underline',
-  }
 });
