@@ -1,20 +1,26 @@
 import React from "react";
 import { View, TouchableOpacity, Text, StyleSheet } from "react-native";
+import FontAwesomeIcon from "react-native-vector-icons/Entypo";
+//import FontAwesomeIcon from "react-native-vector-icons/Feather";
 
 const BottomBar = () => {
   return (
     <View style={styles.bottomBar}>
       <TouchableOpacity style={styles.button}>
-        <Text style={styles.buttonText}>Option 1</Text>
+        <FontAwesomeIcon name="home" size={30} color={"black"} />
+        <Text style={styles.buttonText}>Home</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.button}>
-        <Text style={styles.buttonText}>Option 2</Text>
+        <FontAwesomeIcon name="wallet" size={30} color={"black"} />
+        <Text style={styles.buttonText}>Wallet</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.button}>
-        <Text style={styles.buttonText}>Option 3</Text>
+        <FontAwesomeIcon name="pie-chart" size={30} color={"black"} />
+        <Text style={styles.buttonText}>Chart</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.button}>
-        <Text style={styles.buttonText}>Option 3</Text>
+        <FontAwesomeIcon name="cog" size={30} color={"black"} />
+        <Text style={styles.buttonText}>Settings</Text>
       </TouchableOpacity>
     </View>
   );
@@ -25,7 +31,7 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-around",
     alignItems: "center",
-    height: 60,
+    height: 90,
     borderRadius: 30
   },
   button: {

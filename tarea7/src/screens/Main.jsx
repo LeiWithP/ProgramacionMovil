@@ -3,6 +3,8 @@ import { StyleSheet, Text, View } from "react-native";
 import TopBar from "../components/TopBar";
 import ButtonArrange from "../components/ButtonArrange";
 import BottomBar from "../components/BottomBar";
+import AssetList from "../components/AssetList";
+import FontAwesomeIcon from "react-native-vector-icons/Feather";
 
 const Main = () => {
   return (
@@ -11,13 +13,17 @@ const Main = () => {
         <TopBar title="Wallet" />
         <View style={styles.sectionnums}>
           <Text style={styles.number}>$23,867</Text>
-          <Text style={styles.subnumber}>Wallet id: 4657381901</Text>
+          <View style={{flexDirection: "row"}}>
+            <Text style={styles.subnumber}>Wallet id: 4657381901</Text>
+            <FontAwesomeIcon style={{marginLeft: 6}} name="copy" size={14} color={"white"} />
+          </View>
         </View>
         <ButtonArrange />
       </View>
       <View style={styles.section2}>
-        <Text>My Assets</Text>
-        <BottomBar/>
+        <Text style={styles.menuText}>My Assets</Text>
+        <AssetList />
+        <BottomBar />
       </View>
       <StatusBar style="auto" />
     </View>
@@ -52,7 +58,7 @@ const styles = StyleSheet.create({
   sectionnums: {
     flexDirection: "column",
     justifyContent: "center",
-    alignItems: "center"
+    alignItems: "center",
   },
   number: {
     fontSize: 70,
@@ -61,6 +67,13 @@ const styles = StyleSheet.create({
   subnumber: {
     fontSize: 16,
     color: "white",
+  },
+  menuText: {
+    fontSize: 18,
+    alignSelf: "flex-start",
+    marginLeft: 40,
+    marginTop: 20,
+    fontWeight: "700",
   },
 });
 

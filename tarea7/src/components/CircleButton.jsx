@@ -1,12 +1,8 @@
 import React from "react";
 import { TouchableOpacity, StyleSheet, View, Text } from "react-native";
 
-const CircleButton = () => {
-  return (
-    <TouchableOpacity style={styles.button}>
-      <View style={styles.iconContainer}></View>
-    </TouchableOpacity>
-  );
+const CircleButton = ({ children }) => {
+  return <TouchableOpacity style={styles.button}>{children}</TouchableOpacity>;
 };
 
 const styles = StyleSheet.create({
@@ -17,9 +13,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#ffd28a",
     alignItems: "center",
     justifyContent: "center",
-  },
-  iconContainer: {
-    marginBottom: 8,
   },
 });
 
