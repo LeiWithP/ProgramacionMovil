@@ -24,8 +24,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: 'White',
     paddingTop: Constants.statusBarHeight,
-    alignItems: "center",
-    justifyContent: "center",
+
   },
   text: {
     color: "white",
