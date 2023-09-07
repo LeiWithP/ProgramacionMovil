@@ -1,3 +1,4 @@
+import { StatusBar } from "expo-status-bar";
 import {
   StyleSheet,
   View,
@@ -7,15 +8,13 @@ import {
 } from "react-native";
 import { THEME } from "./src/theme/styles";
 import Constants from "expo-constants";
+import WelcomeScreen from "./src/screens/WelcomeScreen";
 
-// const CustomText = Platform.select({
-//   ios: () => require("./src/components/IosText"),
-// })();
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Hello</Text>
+      <WelcomeScreen/>
     </View>
   );
 }
@@ -23,20 +22,10 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: Platform.select({
-      android: "red",
-      ios: "blue",
-      web: "green",
-    }),
+    backgroundColor: 'White',
     paddingTop: Constants.statusBarHeight,
     alignItems: "center",
     justifyContent: "center",
-    ...Platform.select({
-      ios: {
-        backgroundColor: "red",
-        padding: 20,
-      },
-    }),
   },
   text: {
     color: "white",
