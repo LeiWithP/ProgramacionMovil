@@ -1,2 +1,3 @@
-# ProgramacionMovil
-Repositorio para tareas de la materia de tecnologias de programacion movil
+# Integrantes
+Pedro Uziel Barrita Licea
+Alan Garcia Diaz
