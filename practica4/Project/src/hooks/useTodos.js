@@ -1,15 +1,27 @@
 import { useState } from "react";
-import { handleShowError } from "../utils/showError";
-
+import { handleShowError } from "../helpers/handleShowError";
+import ModalTodo from "../components/tarea3/ModalTodo";
 
 export const useTodos = () => {
   const [inputValue, setInputValue] = useState("");
   const [todos, setTodos] = useState([]);
 
-  const [editTodo, setEditTodo] = useState(false);
-  const [buttonText, setButtonText] = useState("Add Task");
+  const [editMode, setEditMode] = useState(false);
   const [todoID, setTodoID] = useState(null);
+  const [todo, setTodo] = useState(null);
 
+  const [modalVisible, setModalVisible] = useState(false);
+
+  const getTodo = (id) => {
+    const result = todos.find((todo) => todo.id === id);
+    return result;
+  }
+
+  const handleDetails = (id) => {    
+    result = getTodo(id);
+    setTodo(result)
+    setModalVisible(true);
+  }
 
   function validateInput() {
     if (inputValue === "") {
@@ -39,6 +51,7 @@ export const useTodos = () => {
       {
         id: new Date().toISOString(),
         name: inputValue,
+        createdDate: new Date().toLocaleString(),
         isCompleted: false,
       },
     ]);
@@ -66,9 +79,8 @@ export const useTodos = () => {
     setTodos(mappedArray);
   };
 
-  const handleEdit = (id) => {
-    setButtonText("Edit Task");
-    setEditTodo(true);
+  const handleEditMode = (id) => {
+    setEditMode(true);
     setTodoID(id);
   };
 
@@ -91,21 +103,24 @@ export const useTodos = () => {
     });
 
     setTodos(mappedArray);
-    setButtonText("Add Task");
     setInputValue("");
-    setEditTodo(false);
+    setEditMode(false);
   };
 
   return {
     inputValue,
     todos,
-    editTodo,
-    buttonText,
+    editMode,
     todoID,
+    todo,
+    modalVisible,
+    setInputValue,
+    setModalVisible,
     handleAddTodo,
     handleCompleteTodo,
     handleDeleteTodo,
-    handleEdit,
     handleEditTodo,
+    handleEditMode,
+    handleDetails,
   };
 };
