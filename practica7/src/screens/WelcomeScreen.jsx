@@ -2,33 +2,33 @@ import React from "react";
 import { Image, View, StyleSheet, ScrollView, Text } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import Card from "../components/Otros/Card";
+import Status from "../components/Otros/Status";
 
 const WelcomeScreen = () => {
   return (
     <View style={styles.container}>
       <View style={styles.headerImage}>
         <Ionicons name="notifications-outline" size={24} color="black" />
-        <Image style={styles.headerImage} source={{ uri: "" }} />
+        {/* <Image style={styles.headerImage} source={{ uri: "https://cdn-icons-png.flaticon.com/512/3135/3135715.png" }} /> */}
       </View>
       <Text style={styles.titleText}>
         <Text style={{ color: "#c1c0c4" }}>Hello,</Text>
-        <Text style={{ color: "#2b3941" }}>Chris</Text>
+        <Text style={{ color: "#2b3941" }}>Chris👋</Text>
       </Text>
       <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-        <Card isDarkBlue={true} />
+        <Card color="#4273fc" text="Start Training" />
+        <Card color="#e6ecff" text="Your treatment plan" />
       </ScrollView>
-      <Text style={styles.textHeader}>
-        
-      </Text>
+      <Text style={styles.textHeader}>What are your symptoms?</Text>
       <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-        <View style={styles.symptomsContainer}>
-          <Text style={{
-            fontSize:18,
-            fontWeight: '600',
-            color: "",
-          }}>I'm fine</Text>
-        </View>
+        <Status text="😉 I'm fine" />
+        <Status text="🤒 Fever" />
+        <Status text="🤧 Sneeze" />
+        <Status text="😉 I'm fine" />
+        <Status text="🤒 Fever" />
+        <Status text="🤧 Sneeze" />
       </ScrollView>
+      <Text style={styles.textHeader}>Popular therapists</Text>
     </View>
   );
 };
@@ -78,12 +78,13 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: "#236cff",
   },
-  textHeader:{
-    fontSize: 25,
-    color: "",
-    fontWeight: "bold",
+  textHeader: {
+    fontSize: 24,
+    fontWeight: "500",
+    marginVertical: 26,
+    marginLeft: 10,
   },
-  symptomsContainer:{
+  symptomsContainer: {
     backgroundColor: "",
     width: 150,
     paddingHorizontal: 10,
@@ -91,9 +92,8 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     alignItems: "center",
     marginTop: 15,
-    marginRight: 15
-  }
-
+    marginRight: 15,
+  },
 });
 
 export default WelcomeScreen;

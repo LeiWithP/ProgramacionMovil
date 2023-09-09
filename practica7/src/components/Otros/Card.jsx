@@ -3,8 +3,8 @@ import { View, Text, StyleSheet } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
 
-const Card = ({ isDarkblue, text, iconName, iconType }) => {
-  iconColor =  isDarkblue ? '' : 'white'
+const Card = ({ color, text, iconName, iconType }) => {
+  const iconColor = color === "darkblue" ? "white" : "black";
 
   const CustomIcon =
     iconType === "Ionicons" ? (
@@ -12,29 +12,28 @@ const Card = ({ isDarkblue, text, iconName, iconType }) => {
     ) : (
       <AntDesign color={iconColor} name={iconName} size={30} />
     );
+
   return (
     <View
       style={[
         styles.cardContainer,
-        isDarkblue ? styles.cardContainerDark : styles.cardContainerLight,
+        { backgroundColor: color },
       ]}
     >
       <View
         style={[
           styles.cardIconContainer,
-          isDarkblue
-            ? styles.cardIconContainerDark
-            : styles.cardIconContainerLight,
+          // color === "darkblue" ? styles.cardIconContainerDark : styles.cardIconContainerLight,
         ]}
       >
         {CustomIcon}
         <Text
           style={[
             styles.cardText,
-            isDarkblue ? styles.cardContainerDark : styles.cardContainerLight,
+            // color === "darkblue" ? styles.cardTextDark : styles.cardTextLight,
           ]}
         >
-          Start Training
+          {text}
         </Text>
       </View>
     </View>
@@ -43,32 +42,22 @@ const Card = ({ isDarkblue, text, iconName, iconType }) => {
 
 const styles = StyleSheet.create({
   cardContainer: {
-    height: 200,
-    width: 220,
-    borderRadius: 40,
+    height: 160,
+    width: 170,
+    borderRadius: 30,
     paddingHorizontal: 30,
     justifyContent: "center",
-    gap: 500,
-  },
-  cardContainerDark: {
-    backgroundColor: "#e6ecff",
-  },
-  cardContainerLight: {
-    backgroundColor: "#e6ecff",
+    alignItems: "center",
+    marginHorizontal: 5,
   },
   cardIconContainer: {
-    justifyContent: "",
-    alignItems: "",
-  },
-  cardIconContainerDark: {
-    backgroundColor: "",
-  },
-  cardIconContainerLight: {
-    backgroundColor: "",
+    justifyContent: "center",
+    alignItems: "center",
   },
   cardText: {
     fontSize: 20,
     fontWeight: "bold",
+    marginTop: 10,
   },
 });
 
