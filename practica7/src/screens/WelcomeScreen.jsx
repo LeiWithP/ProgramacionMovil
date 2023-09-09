@@ -3,21 +3,42 @@ import { Image, View, StyleSheet, ScrollView, Text } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import Card from "../components/Otros/Card";
 import Status from "../components/Otros/Status";
+import CircleIcon from "../components/Otros/CircleIcon.";
+import PopularList from "../components/Otros/PopularList";
+import BottomNavigationBar from "../components/Otros/BottomNavigationBar";
 
 const WelcomeScreen = () => {
+  const popularTherapists = [
+    { id: "1", name: "Dr. Alice Johnson", title: "physiotherapist" },
+    { id: "2", name: "Dr. Mark Smith", title: "therapist" },
+    { id: "3", name: "Dr. Robinson Ace", title: "psicologist" },
+  ];
+
   return (
     <View style={styles.container}>
       <View style={styles.headerImage}>
         <Ionicons name="notifications-outline" size={24} color="black" />
-        {/* <Image style={styles.headerImage} source={{ uri: "https://cdn-icons-png.flaticon.com/512/3135/3135715.png" }} /> */}
+        <CircleIcon color="white" iconName="people" iconColor="#4273fc" />
       </View>
       <Text style={styles.titleText}>
         <Text style={{ color: "#c1c0c4" }}>Hello,</Text>
         <Text style={{ color: "#2b3941" }}>Chris👋</Text>
       </Text>
       <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-        <Card color="#4273fc" text="Start Training" />
-        <Card color="#e6ecff" text="Your treatment plan" />
+        <Card
+          color="#4273fc"
+          text="Start Training"
+          iconName="barbell-outline"
+          iconColor="#e6ecff"
+          textColor="white"
+        />
+        <Card
+          color="#e6ecff"
+          text="Your treatment plan"
+          iconName="list"
+          iconColor="#4273fc"
+          textColor="black"
+        />
       </ScrollView>
       <Text style={styles.textHeader}>What are your symptoms?</Text>
       <ScrollView horizontal showsHorizontalScrollIndicator={false}>
@@ -29,6 +50,10 @@ const WelcomeScreen = () => {
         <Status text="🤧 Sneeze" />
       </ScrollView>
       <Text style={styles.textHeader}>Popular therapists</Text>
+      <View style={{height: 210}}>
+      <PopularList data={popularTherapists} />
+      </View>
+      <BottomNavigationBar></BottomNavigationBar>
     </View>
   );
 };
@@ -45,10 +70,12 @@ const styles = StyleSheet.create({
     paddingHorizontal: 5,
   },
   headerImage: {
-    width: 50,
+    width: 360,
     height: 50,
     borderRadius: 50,
     // resizeMode: "center",
+    flexDirection: "row",
+    justifyContent: "space-between"
   },
   titleText: {
     marginTop: 10,

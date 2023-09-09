@@ -2,40 +2,14 @@ import React from "react";
 import { View, Text, StyleSheet } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { AntDesign } from "@expo/vector-icons";
+import CircleIcon from "./CircleIcon.";
 
-const Card = ({ color, text, iconName, iconType }) => {
-  const iconColor = color === "darkblue" ? "white" : "black";
-
-  const CustomIcon =
-    iconType === "Ionicons" ? (
-      <Ionicons color={iconColor} name={iconName} size={30} />
-    ) : (
-      <AntDesign color={iconColor} name={iconName} size={30} />
-    );
-
+const Card = ({ color, text, iconName, iconType, iconColor, textColor }) => {
   return (
-    <View
-      style={[
-        styles.cardContainer,
-        { backgroundColor: color },
-      ]}
-    >
-      <View
-        style={[
-          styles.cardIconContainer,
-          // color === "darkblue" ? styles.cardIconContainerDark : styles.cardIconContainerLight,
-        ]}
-      >
-        {CustomIcon}
-        <Text
-          style={[
-            styles.cardText,
-            // color === "darkblue" ? styles.cardTextDark : styles.cardTextLight,
-          ]}
-        >
-          {text}
-        </Text>
-      </View>
+    <View style={[styles.cardContainer, { backgroundColor: color }]}>
+      <CircleIcon color={iconColor} iconName={iconName} iconColor={color} />
+
+      <Text style={[ styles.cardText, { color: textColor }] }>{text}</Text>
     </View>
   );
 };
@@ -45,19 +19,16 @@ const styles = StyleSheet.create({
     height: 160,
     width: 170,
     borderRadius: 30,
-    paddingHorizontal: 30,
+    paddingHorizontal: 32,
     justifyContent: "center",
-    alignItems: "center",
+    alignItems: "flex-start",
     marginHorizontal: 5,
   },
-  cardIconContainer: {
-    justifyContent: "center",
-    alignItems: "center",
-  },
   cardText: {
-    fontSize: 20,
+    fontSize: 16,
     fontWeight: "bold",
-    marginTop: 10,
+    marginTop: 30,
+    color: "white"
   },
 });
 
