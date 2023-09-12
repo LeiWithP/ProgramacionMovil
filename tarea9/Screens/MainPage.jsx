@@ -1,26 +1,59 @@
 import React from "react";
-import { View, Text, Image, StyleSheet } from "react-native";
-import GoButton from "../Components/GoButton";
-import WhiteButton from "../Components/WhiteButton";
+import { View, Text, ScrollView, StyleSheet } from "react-native";
+import SearchBox from "../Components/SearchBox";
+import Tag from "../Components/Tag";
+import Adjust from "../Components/Adjust";
+import ProductCard from "../Components/ProductCard";
+import BottomBar from "../Components/BottomBar";
 
-function MainPage({ navigation }) {
+function MainPage() {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Welcome!</Text>
-      <Text style={styles.subtitle}>Sign in or create a new account</Text>
-      <Image
-        source={{ uri: 'https://cdn.pixabay.com/photo/2023/07/21/12/14/hot-air-balloon-8141544_1280.jpg' }}
-        style={styles.image}
+      <View style={styles.evenContainer}>
+        <View style={{ flexDirection: "column" }}>
+          <Text style={styles.title}>Discover</Text>
+          <Text style={styles.subtitle}>your products</Text>
+        </View>
+        <Text style={{ fontSize: 50 }}>👩‍🦰</Text>
+      </View>
+      <View style={{ flexDirection: "column" }}>
+        <View style={styles.evenContainer}>
+          <SearchBox placeholder="Search..." />
+          <Adjust />
+        </View>
+        <View style={styles.startContainer}>
+          <Tag textTag="Miniso" />
+          <Tag textTag="Neurso" />
+        </View>
+      </View>
+      <Text style={styles.title2}>Popular Product</Text>
+      <ScrollView style={{ marginLeft: 14 }} horizontal showsHorizontalScrollIndicator={false}>
+      <ProductCard
+        imageSource={require('../assets/old-camera.jpg')}
+        tag="Portable FM"
+        title="Divoom Radio"
+        price="52.00"
       />
-      <GoButton
-        title="Go to Sign In"
-        onPress={() => navigation.navigate("Sign In")}
+      <ProductCard
+        imageSource={require('../assets/vintage-camera.jpg')}
+        tag="Smallest FM"
+        title="Manual FM"
+        price="48.32"
       />
-      <WhiteButton
-        title1="Not account yet?"
-        title2=" Sign up"
-        onPress={() => navigation.navigate("Create Account")}
+      <ProductCard
+        imageSource={require('../assets/old-camera.jpg')}
+        tag="Portable FM"
+        title="Divoom Radio"
+        price="52.00"
       />
+      <ProductCard
+        imageSource={require('../assets/vintage-camera.jpg')}
+        tag="Smallest FM"
+        title="Manual FM"
+        price="48.32"
+      />
+      </ScrollView>
+      <BottomBar />
     </View>
   );
 }
@@ -28,26 +61,38 @@ function MainPage({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    justifyContent: "space-evenly",
+    alignItems: "center",
+    backgroundColor: "#f5f5f5",
+    paddingVertical: 40,
+  },
+  evenContainer: {
+    width: 320,
+    flexDirection: "row",
     justifyContent: "space-between",
     alignItems: "center",
-    backgroundColor: "white",
-    paddingVertical: 40
+    marginTop: 20,
+  },
+  startContainer: {
+    width: 320,
+    flexDirection: "row",
+    justifyContent: "flex-start",
+    alignItems: "center",
+    marginVertical: 16,
   },
   title: {
-    fontSize: 36,
+    fontSize: 32,
     fontWeight: "600",
   },
   subtitle: {
-    fontSize: 14,
+    fontSize: 26,
     fontWeight: "200",
-    color: "grey",
   },
-  image: {
-    width: 300,
-    height: 340,
-    marginVertical: 40,
-    borderRadius: 20
-  }
+  title2: {
+    fontSize: 26,
+    fontWeight: "400",
+    width: 320,
+  },
 });
 
 export default MainPage;
