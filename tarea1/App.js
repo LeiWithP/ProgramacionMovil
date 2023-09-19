@@ -9,8 +9,7 @@ import {
 } from "react-native";
 import { useState } from "react";
 import Todo from "./src/components/Todo";
-import CustomButton from "./src/components/CustomButton";
-import TodoInput from "./src/components/TodoInput";
+import { FontAwesome } from "@expo/vector-icons";
 
 const TODOS = [
   {
@@ -35,7 +34,6 @@ export default function App() {
   const [todos, setTodos] = useState([]);
 
   const handleAddTodo = () => {
-
     if (inputValue === "") {
       return;
     }
@@ -51,6 +49,10 @@ export default function App() {
     setInputValue("");
   };
 
+  const handleDeleteTodo = (id) => {
+    setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== id));
+  };
+
   return (
     <View style={styles.container}>
       <View style={{ paddingHorizontal: 20, paddingTop: 10 }}>
@@ -59,19 +61,31 @@ export default function App() {
             fontSize: 40,
             fontWeight: "bold",
             textAlign: "center",
-            color: "white",
+            color: "#F4F2DE",
           }}
         >
           Todo List
         </Text>
-        <View style={{ flexDirection: "row", marginTop: 20, gap: 20 }}>
-          <TodoInput value={inputValue} onChangeText={(value) => setInputValue(value)} />
-          <CustomButton text="Add Task" light onPress={handleAddTodo} />
+        <View style={{ flexDirection: "row", marginTop: 20, gap: 20, alignItems: "center" }}>
+          <TextInput
+            style={styles.input}
+            value={inputValue}
+            onChangeText={(value) => setInputValue(value)}
+            placeholder="Add a task"
+          />
+          <FontAwesome
+            name="plus-square"
+            color="#E9B384"
+            onPress={handleAddTodo}
+            style={styles.plusIcon}
+          />
         </View>
         <FlatList
           data={todos}
           keyExtractor={(item) => item.id}
-          renderItem={({ item: { name } }) => <Todo name={name} />}
+          renderItem={({ item }) => (
+            <Todo name={item.name} onDelete={() => handleDeleteTodo(item.id)} />
+          )}
         />
       </View>
 
@@ -83,34 +97,18 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#fff",
+    backgroundColor: "#7C9D96",
     paddingTop: ReactStatus.currentHeight,
-    backgroundColor: "#2a6355",
+  },
+  input: {
+    flex: 1,
+    height: 40,
+    backgroundColor: "#F4F2DE",
+    borderRadius: 8,
+    paddingHorizontal: 10,
+  },
+  plusIcon: {
+    fontSize: 46,
+    alignSelf: "center",
   },
 });
-
-/*
-
-const [screen, setScreen] = useState(1);
-
-  onClickScreen1 = () => {
-    setScreen(1);
-  };
-
-  onClickScreen2 = () => {
-    setScreen(2);
-  };
-
-  onClickScreen3 = () => {
-    setScreen(3);
-  };
-  
-{
-  screen === 1 ? (
-  <WelcomeScreen onSignInPress={onClickScreen2} onSignUpPress={onClickScreen3}/>
-  ) : screen === 2 ? (
-  <SignInScreen onPress={onClickScreen1} />
-  ) : (
-  <SignUpScreen onPress={onClickScreen1} />
-  )}
-*/
