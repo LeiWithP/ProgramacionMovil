@@ -53,6 +53,14 @@ export default function App() {
     setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== id));
   };
 
+  const handleEditTodo = (id, editedText) => {
+    setTodos((prevTodos) =>
+      prevTodos.map((todo) =>
+        todo.id === id ? { ...todo, name: editedText } : todo
+      )
+    );
+  };
+
   return (
     <View style={styles.container}>
       <View style={{ paddingHorizontal: 20, paddingTop: 10 }}>
@@ -66,7 +74,14 @@ export default function App() {
         >
           Todo List
         </Text>
-        <View style={{ flexDirection: "row", marginTop: 20, gap: 20, alignItems: "center" }}>
+        <View
+          style={{
+            flexDirection: "row",
+            marginTop: 20,
+            gap: 20,
+            alignItems: "center",
+          }}
+        >
           <TextInput
             style={styles.input}
             value={inputValue}
@@ -84,7 +99,11 @@ export default function App() {
           data={todos}
           keyExtractor={(item) => item.id}
           renderItem={({ item }) => (
-            <Todo name={item.name} onDelete={() => handleDeleteTodo(item.id)} />
+            <Todo
+              name={item.name}
+              onDelete={() => handleDeleteTodo(item.id)}
+              onEdit={(editedText) => handleEditTodo(item.id, editedText)}
+            />
           )}
         />
       </View>
