@@ -10,11 +10,14 @@ import {
 import { useState } from "react";
 import Todo from "./src/components/Todo";
 import { FontAwesome } from "@expo/vector-icons";
+import { DateTime } from "luxon"; // Import luxon DateTime
 
 const TODOS = [
   {
     id: 1,
     name: "Task 1",
+    created: "",
+    edited: "",
     isCompleted: false,
   },
   {
@@ -38,11 +41,15 @@ export default function App() {
       return;
     }
 
+    const now = DateTime.now().setZone("America/Mexico_City"); // Get the current time in Mexico City timezone
+
     setTodos([
       ...todos,
       {
         id: new Date().toISOString(),
         name: inputValue,
+        created: now.toISO(), // Save the creation time
+        edited: "",
         isCompleted: false,
       },
     ]);
@@ -54,9 +61,20 @@ export default function App() {
   };
 
   const handleEditTodo = (id, editedText) => {
+    if (!editedText.trim()) {
+      return;
+    }
+    if (todos.some((todo) => todo.name === editedText && todo.id !== id)) {
+      return;
+    }
+
+    const now = DateTime.now().setZone("America/Mexico_City"); // Get the current time in Mexico City timezone
+
     setTodos((prevTodos) =>
       prevTodos.map((todo) =>
-        todo.id === id ? { ...todo, name: editedText } : todo
+        todo.id === id
+          ? { ...todo, name: editedText, edited: now.toISO() } // Update the edited time
+          : todo
       )
     );
   };
@@ -101,6 +119,8 @@ export default function App() {
           renderItem={({ item }) => (
             <Todo
               name={item.name}
+              created={item.created}
+              edited={item.edited}
               onDelete={() => handleDeleteTodo(item.id)}
               onEdit={(editedText) => handleEditTodo(item.id, editedText)}
             />
