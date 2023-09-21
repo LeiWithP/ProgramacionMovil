@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { StyleSheet, View, Text, TextInput } from "react-native";
+import { StyleSheet, View, Text, TextInput, TouchableOpacity } from "react-native";
 import { FontAwesome, Entypo } from "@expo/vector-icons";
 
-const Todo = ({ name, created, edited, onDelete, onEdit }) => {
+const Todo = ({ name, created, edited, onDelete, onEdit, openFloatingWindow }) => {
   const [isChecked, setIsChecked] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
   const [editedText, setEditedText] = useState(name);
@@ -43,15 +43,22 @@ const Todo = ({ name, created, edited, onDelete, onEdit }) => {
               onChangeText={(text) => setEditedText(text)}
             />
           ) : (
-            <Text
-              style={{ fontSize: 24, fontWeight: "bold", color: "#E9B384" }}
-            >
-              {name}
-            </Text>
+            <TouchableOpacity onPress={openFloatingWindow}>
+              <Text
+                style={[
+                  styles.nameText,
+                  isChecked ? { textDecorationLine: "line-through" } : null,
+                ]}
+              >
+                {name}
+              </Text>
+            </TouchableOpacity>
           )}
         </View>
         <Text style={styles.dateText}>Created on: {created}</Text>
-        {edited ? <Text style={styles.dateText}>Edited on: {edited}</Text> : null}
+        {edited ? (
+          <Text style={styles.dateText}>Edited on: {edited}</Text>
+        ) : null}
       </View>
       <View style={{ flexDirection: "row", gap: 10 }}>
         {isEditing ? (
@@ -96,6 +103,12 @@ const styles = StyleSheet.create({
   checkbox: {
     alignSelf: "center",
     marginRight: 10,
+  },
+  nameText: {
+    fontSize: 24,
+    fontWeight: "bold",
+    color: "#E9B384",
+    width: 220,
   },
   editableText: {
     flex: 1,

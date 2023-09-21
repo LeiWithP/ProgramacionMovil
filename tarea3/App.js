@@ -10,45 +10,28 @@ import {
 import { useState } from "react";
 import Todo from "./src/components/Todo";
 import { FontAwesome } from "@expo/vector-icons";
-import { DateTime } from "luxon"; // Import luxon DateTime
-
-const TODOS = [
-  {
-    id: 1,
-    name: "Task 1",
-    created: "",
-    edited: "",
-    isCompleted: false,
-  },
-  {
-    id: 2,
-    name: "Task 2",
-    isCompleted: false,
-  },
-  {
-    id: 3,
-    name: "Task 3",
-    isCompleted: false,
-  },
-];
+import { DateTime } from "luxon";
+import FloatingWindow from "./src/components/FlotatingWindow";
 
 export default function App() {
   const [inputValue, setInputValue] = useState("");
   const [todos, setTodos] = useState([]);
+  const [actualData, setActualData] = useState();
+  const [isFloatingWindowVisible, setIsFloatingWindowVisible] = useState(false); // State for the floating window
 
   const handleAddTodo = () => {
     if (inputValue === "") {
       return;
     }
 
-    const now = DateTime.now().setZone("America/Mexico_City"); // Get the current time in Mexico City timezone
+    const now = DateTime.now().setZone("America/Mexico_City");
 
     setTodos([
       ...todos,
       {
         id: new Date().toISOString(),
         name: inputValue,
-        created: now.toISO(), // Save the creation time
+        created: now.toISO(),
         edited: "",
         isCompleted: false,
       },
@@ -77,6 +60,17 @@ export default function App() {
           : todo
       )
     );
+  };
+
+  // Method to open the floating window
+  const openFloatingWindow = (newData) => {
+    setActualData(newData);
+    setIsFloatingWindowVisible(true);
+  };
+
+  // Method to close the floating window
+  const closeFloatingWindow = () => {
+    setIsFloatingWindowVisible(false);
   };
 
   return (
@@ -123,10 +117,16 @@ export default function App() {
               edited={item.edited}
               onDelete={() => handleDeleteTodo(item.id)}
               onEdit={(editedText) => handleEditTodo(item.id, editedText)}
+              openFloatingWindow={() => openFloatingWindow(item)}
             />
           )}
         />
       </View>
+
+      {/* Render the FloatingWindow component conditionally */}
+      {isFloatingWindowVisible && (
+        <FloatingWindow onClose={closeFloatingWindow} data={actualData} />
+      )}
 
       <StatusBar style="light" />
     </View>
