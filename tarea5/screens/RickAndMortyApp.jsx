@@ -1,7 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, FlatList, Image, StyleSheet } from "react-native";
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  FlatList,
+  Image,
+  StyleSheet,
+} from "react-native";
 
-const RickAndMortyApp = () => {
+const RickAndMortyApp = ({ navigation }) => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -18,19 +25,24 @@ const RickAndMortyApp = () => {
         data={data}
         keyExtractor={(item) => item.id.toString()}
         renderItem={({ item }) => (
-          <View style={styles.item}>
-            <Image source={{ uri: item.image }} style={styles.image} />
-            <View style={styles.textBox}>
-              <Text style={styles.text1}>{item.name}</Text>
-              <Text style={styles.text2}>
-                {item.status} - {item.species}
-              </Text>
-              <Text style={styles.text3}>Last Known Location:</Text>
-              <Text style={styles.text2}>{item.location.name}</Text>
-              <Text style={styles.text3}>First Seen In:</Text>
-              <Text style={styles.text2}>{item.origin.name}</Text>
+          <TouchableOpacity
+            // style={styles.item}
+            onPress={() => navigation.navigate("Details", { item })}
+          >
+            <View style={styles.item}>
+              <Image source={{ uri: item.image }} style={styles.image} />
+              <View style={styles.textBox}>
+                <Text style={styles.text1}>{item.name}</Text>
+                <Text style={styles.text2}>
+                  {item.status} - {item.species}
+                </Text>
+                <Text style={styles.text3}>Last Known Location:</Text>
+                <Text style={styles.text2}>{item.location.name}</Text>
+                <Text style={styles.text3}>First Seen In:</Text>
+                <Text style={styles.text2}>{item.origin.name}</Text>
+              </View>
             </View>
-          </View>
+          </TouchableOpacity>
         )}
       />
     </View>
