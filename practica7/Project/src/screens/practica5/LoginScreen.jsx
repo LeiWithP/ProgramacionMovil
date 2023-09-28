@@ -4,16 +4,22 @@ import {
   View,
   Text,
   FlatList,
+  Button,
 } from "react-native";
 import { useState, useEffect } from "react";
 import { THEME } from "../../theme/styles";
+import Header from "../../components/practica6/Header";
 
 const LoginScreen = ({ route, navigation}) => {
     const { name } = route.params;
 
+    const { canGoBack, goBack } = navigation;
+
   return (
     <View>
+      <Header/>
       <Text style={{fontSize:20}}>LoginScreen { name }</Text>
+      <Button title='Go Back' disabled={!canGoBack()} onPress={() => goBack()}/>
     </View>
   );
 };

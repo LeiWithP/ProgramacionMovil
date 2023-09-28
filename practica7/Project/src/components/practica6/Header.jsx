@@ -8,12 +8,21 @@ import {
 } from "react-native";
 import { useState, useEffect } from "react";
 import { THEME } from "../../theme/styles";
+import { useNavigation } from "@react-navigation/native";
+import { AntDesign } from "@expo/vector-icons";
 
-const HomeScreen = ({ navigation }) => {
+const Header = () => {
+  const { canGoBack, goBack } = useNavigation();
   return (
-    <View>
-      <Text>HomeScreen</Text>
-      <Button title="Go to Login" onPress={() => navigation.navigate("Login", {name : 'Eder'})} />
+    <View style={styles.header}>
+      <AntDesign
+        name="leftcircleo"
+        size={24}
+        color="white"
+        onPress={() => goBack()}
+        disabled={!canGoBack()}
+      />
+      <Text style={styles.title}>Go back</Text>
     </View>
   );
 };
@@ -25,10 +34,10 @@ const styles = StyleSheet.create({
   },
   header: {
     flexDirection: "row",
-    justifyContent: "space-between",
+    backgroundColor: "red",
     alignItems: "center",
-    paddingHorizontal: 20,
-    paddingVertical: 10,
+    gap: 10,
+    padding: 10,
   },
   title: {
     fontSize: 25,
@@ -43,4 +52,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default HomeScreen;
+export default Header;
