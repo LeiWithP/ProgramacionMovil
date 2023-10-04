@@ -8,12 +8,12 @@ import {
   TextInput,
   FlatList,
 } from "react-native";
-import { useState } from "react";
+import { THEME } from "../../theme/styles";
 
 const CustomButton = ({ text, onPress, light }) => {
   return (
     <TouchableOpacity
-      style={[styles.container, light ? styles.white : "auto"]}
+      style={[styles.container, light ? styles.light : styles.dark]}
       onPress={onPress}
     >
       <Text style={{ color: light ? "white" : "black" }}>{text}</Text>
@@ -28,7 +28,12 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
-  white: {
+  dark: {
+    backgroundColor: THEME.COLORS.RED,
+    color: "black",
+    borderColor: "black",
+  },
+  light: {
     color: "white",
     borderColor: "white",
   },
