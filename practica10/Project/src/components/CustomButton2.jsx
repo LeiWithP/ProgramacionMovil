@@ -2,12 +2,13 @@ import React from "react";
 import { StyleSheet, Text, TouchableOpacity } from "react-native";
 import { THEME } from "../theme/styles";
 
-const Button = ({ isPrimary, text, secondText, onPress }) => {
+const CustomButton2 = ({ isPrimary, text, secondText, onPress, color }) => {
   return (
     <TouchableOpacity
       style={[
         styles.container,
         isPrimary ? styles.primaryButton : styles.secondaryButton,
+        color && { backgroundColor: color }, // Apply the custom color if provided
       ]}
       onPress={onPress}
     >
@@ -38,16 +39,17 @@ const Button = ({ isPrimary, text, secondText, onPress }) => {
 
 const styles = StyleSheet.create({
   container: {
-    marginVertical: 10,
-    height: 50,
-    width: "80%",
-    borderRadius: 10,
+    marginTop: 20,
+    marginBottom: 10,
+    height: 60,
+    width: "85%",
+    borderRadius: 50,
     padding: 5,
     justifyContent: "center",
     alignItems: "center",
   },
   primaryButton: {
-    backgroundColor: THEME.COLORS.ORANGE,
+    backgroundColor: THEME.COLORS.ORANGE.CRAYOLA,
   },
   secondaryButton: {
     backgroundColor: THEME.COLORS.WHITE,
@@ -55,6 +57,7 @@ const styles = StyleSheet.create({
     borderColor: THEME.COLORS.GREY,
   },
   primaryButtonText: {
+    fontWeight: "bold", 
     color: THEME.COLORS.WHITE,
   },
   secondaryButtonText: {
@@ -62,4 +65,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Button;
+export default CustomButton2;
