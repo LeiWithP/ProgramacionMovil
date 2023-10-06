@@ -17,7 +17,7 @@ const BigButton = ({ text, onPress }) => {
       height: 70,
     },
     buttonText: {
-      color: theme.colors.background,
+      color: 'black',
       fontSize: 20,
       fontWeight: "bold",
     },

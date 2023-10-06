@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, Image, StyleSheet } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 import { useTheme } from "../components/ThemeProvider";
 import CalculatorGrid from "../components/CalculatorGrid";
 import BigButton from "../components/BigButton";
@@ -24,7 +24,7 @@ function PageTwo() {
     numbers: {
       fontSize: 52,
       fontWeight: "400",
-      color: "white",
+      color: theme.colors.text,
     },
   });
 

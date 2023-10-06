@@ -26,7 +26,7 @@ const CalculatorGrid = ({ onPress }) => {
     buttonText: {
       fontSize: 24,
       fontWeight: "bold",
-      color: "white",
+      color: theme.colors.text,
     },
   });
 
