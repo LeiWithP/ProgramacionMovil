@@ -1,12 +1,21 @@
 import React from "react";
-import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
+import { View, Text, Image, TouchableOpacity, StyleSheet } from "react-native";
 import getStyles from "../styles/Styles1";
 
 const Page1 = ({ navigation }) => {
   const styles = getStyles();
 
+  const localStyles = StyleSheet.create({
+    image: {
+      width: 300,
+      height: 300,
+      marginTop: 120,
+    }
+  });
+
   return (
     <View style={styles.container}>
+      <Image source={require("../../assets/burger.png")} style={localStyles.image} />
       <View>
         <Text style={styles.title}>Shopping with best e-commerce store</Text>
         <View style={{ height: 12 }} />
