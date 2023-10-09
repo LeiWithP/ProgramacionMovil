@@ -8,7 +8,7 @@ const getStyles = () => {
     container: {
       flex: 1,
       alignItems: "center",
-      justifyContent: "space-around",
+      justifyContent: "space-evenly",
       backgroundColor: theme.background,
     },
     title: {
@@ -22,6 +22,13 @@ const getStyles = () => {
       fontSize: 34,
       width: 320,
       fontWeight: "600",
+      textAlign: "left",
+    },
+    leftSubTitle: {
+      color: theme.text,
+      fontSize: 24,
+      width: 320,
+      fontWeight: "500",
       textAlign: "left",
     },
     text: {

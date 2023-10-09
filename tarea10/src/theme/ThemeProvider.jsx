@@ -20,7 +20,8 @@ export const ThemeProvider = ({ children }) => {
         background: '#fff',
         text: '#000',
         primary: '#499c8e',
-        secondary: '#cc7b10',
+        secondary: '#499c8e',
+        tertiary: '#d1e8e4',
       };
 
   return (

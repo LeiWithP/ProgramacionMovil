@@ -21,7 +21,7 @@ const Page3 = ({ navigation }) => {
     image: {
       width: "100%",
       height: 250,
-      marginTop: -50,
+      marginTop: -60,
       borderBottomLeftRadius: 120,
       borderBottomRightRadius: 120,
     }
@@ -42,7 +42,7 @@ const Page3 = ({ navigation }) => {
         <View style={{ height: 18 }} />
         <View style={{ flexDirection: "row", justifyContent: "center" }}>
           <Text style={styles.text}>Don't have an account? </Text>
-          <TouchableOpacity onPress={() => navigation.navigate("Page2")}>
+          <TouchableOpacity onPress={() => navigation.navigate("Page4")}>
             <Text style={styles.linkText}>Sign Up</Text>
           </TouchableOpacity>
         </View>
