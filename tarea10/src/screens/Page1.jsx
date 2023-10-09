@@ -26,8 +26,7 @@ const Page1 = ({ navigation }) => {
         </View>
       </View>
       <TouchableOpacity
-        // onPress={() => navigation.navigate("Page3")}
-        onPress={() => navigation.navigate("Page2")}
+        onPress={() => navigation.navigate("Page3")}
         style={styles.button}
       >
         <Text style={styles.buttonText}>Get Started!</Text>
