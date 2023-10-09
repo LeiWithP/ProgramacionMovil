@@ -32,18 +32,6 @@ const Page1 = ({ navigation }) => {
       >
         <Text style={styles.buttonText}>Get Started!</Text>
       </TouchableOpacity>
-      {/* <TouchableOpacity
-        onPress={toggleTheme}
-        style={{
-          marginTop: 20,
-          backgroundColor: theme.text,
-          padding: 10,
-          borderRadius: 8,
-          alignSelf: "center",
-        }}
-      >
-        <Text style={{ color: theme.background }}>Toggle Dark Mode</Text>
-      </TouchableOpacity> */}
     </View>
   );
 };
