@@ -1,21 +1,32 @@
-import React from "react";
-import {
-  View,
-  Text,
-  Image,
-  Dimensions,
-  TouchableOpacity,
-  StyleSheet,
-} from "react-native";
+import React, { useState } from "react";
+import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 import { useTheme } from "../theme/ThemeProvider";
 import Field from "../components/Field";
 import SecretField from "../components/SecretField";
 import OrangeButton from "../components/OrangeButton";
 import getStyles from "../styles/Styles1";
+import { useUserContext } from "../context/UserContext";
 
 const Page4 = ({ navigation }) => {
   const styles = getStyles();
   const { theme } = useTheme();
+  const { signUp } = useUserContext();
+  const [formData, setFormData] = useState({
+    username: "",
+    email: "",
+    password: "",
+  });
+
+  const handleSignUp = () => {
+    signUp(formData)
+      .then((user) => {
+        console.log("Sign Up!");
+        navigation.navigate("Page3");
+      })
+      .catch((error) => {
+        console.log("Error: ", error );
+      });
+  };
 
   const localStyles = StyleSheet.create({
     rightTtext: {
@@ -53,11 +64,23 @@ const Page4 = ({ navigation }) => {
           </TouchableOpacity>
         </View>
         <View style={{ height: 26 }} />
-        <Field label="Nme" placeholder="Enter your name" />
-        <Field label="Email" placeholder="Emter your email" />
-        <SecretField label="Password" placeholder="Enter your password" />
+        <Field
+          label="Nme"
+          placeholder="Enter your name"
+          onChangeText={(text) => setFormData({ ...formData, username: text })}
+        />
+        <Field
+          label="Email"
+          placeholder="Emter your email"
+          onChangeText={(text) => setFormData({ ...formData, email: text })}
+        />
+        <SecretField
+          label="Password"
+          placeholder="Enter your password"
+          onChangeText={(text) => setFormData({ ...formData, password: text })}
+        />
         <View style={{ height: 30 }} />
-        <OrangeButton text="Sign Up" />
+        <OrangeButton text="Sign Up" onPress={handleSignUp} />
         <View style={{ height: 20 }} />
         <View style={{ flexDirection: "row", width: 300 }}>
           <Text style={localStyles.sText}>
