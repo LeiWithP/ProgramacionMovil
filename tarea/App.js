@@ -49,27 +49,33 @@ export default function App() {
       </View>
       <View style={styles.keyboard}>
         <View style={styles.row}>
+          <CButton text="C" buttonPress={() => handleButtonPress("C")} />
+          <CButton text="%" buttonPress={() => handleButtonPress("%")} />
+          <CButton text="<" buttonPress={() => handleButtonPress("<")} />
+          <CButton text="/" buttonPress={() => handleButtonPress("/")} />
+        </View>
+        <View style={styles.row}>
           <CButton text="7" buttonPress={() => handleButtonPress("7")} />
           <CButton text="8" buttonPress={() => handleButtonPress("8")} />
           <CButton text="9" buttonPress={() => handleButtonPress("9")} />
-          <CButton text="C" buttonPress={() => handleButtonPress("C")} />
+          <CButton text="*" buttonPress={() => handleButtonPress("*")} />
         </View>
         <View style={styles.row}>
           <CButton text="4" buttonPress={() => handleButtonPress("4")} />
           <CButton text="5" buttonPress={() => handleButtonPress("5")} />
           <CButton text="6" buttonPress={() => handleButtonPress("6")} />
-          <CButton text="+" buttonPress={() => handleButtonPress("+")} />
+          <CButton text="-" buttonPress={() => handleButtonPress("-")} />
         </View>
         <View style={styles.row}>
           <CButton text="1" buttonPress={() => handleButtonPress("1")} />
           <CButton text="2" buttonPress={() => handleButtonPress("2")} />
           <CButton text="3" buttonPress={() => handleButtonPress("3")} />
-          <CButton text="-" buttonPress={() => handleButtonPress("-")} />
+          <CButton text="+" buttonPress={() => handleButtonPress("+")} />
         </View>
         <View style={styles.row}>
-          <CButton text="/" buttonPress={() => handleButtonPress("/")} />
+          <CButton text="!" buttonPress={() => handleButtonPress("!")} />
           <CButton text="0" buttonPress={() => handleButtonPress("0")} />
-          <CButton text="*" buttonPress={() => handleButtonPress("*")} />
+          <CButton text="." buttonPress={() => handleButtonPress(".")} />
           <CButton text="=" buttonPress={() => handleButtonPress("=")} />
         </View>
       </View>
